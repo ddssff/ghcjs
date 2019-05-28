@@ -254,7 +254,7 @@ renderLinker settings dflags renamerState rtsDeps code =
   in ( mconcat rendered <> renderedMeta
      , BL.length renderedMeta
      , renamerState'
-     , M.fromList $ zipWith mkStat code rendered
+     , M.fromList $ zipWith mkStat code (tail rendered)
      )
 
 linkerStats :: Int64         -- ^ code size of packed metadata
