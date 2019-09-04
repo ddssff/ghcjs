@@ -254,13 +254,14 @@ cd libraries/time
 )
 fi
 
+
 # genprimopcode tool
 if [ ! -f ./inplace/bin/genprimopcode ]
 then
 (
 mkdir -p inplace/bin
 cd utils/genprimopcode
-cabal build --builddir=dist
+cabal ${CMDPREFIX}build --builddir=dist
 gnucp dist/build/genprimopcode/genprimopcode ../../inplace/bin
 )
 fi
@@ -502,7 +503,7 @@ for FILE in LICENSE Setup.hs CHANGES.md; do
   copy_file "$GHCSRC/utils/haddock/haddock-library" "$FILE"
 done
 
-for DIR in src test fixtures vendor; do
+for DIR in src test fixtures; do
   copy_dir "$GHCSRC/utils/haddock/haddock-library" "$DIR"
 done
 )

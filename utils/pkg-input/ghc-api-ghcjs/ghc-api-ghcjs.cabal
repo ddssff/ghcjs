@@ -80,8 +80,10 @@ flag use-host-template-haskell
 Library
     Default-Language: Haskell2010
     Exposed: False
+    Build-Tool-Depends: happy:happy >= 1.19 && <= 1.19.9,
+                        alex:alex  >= 3.2
 
-    if(flag(use-host-template-haskell))
+    if(flag(use-host-template-haskell) || impl(ghcjs))
         Build-Depends: template-haskell == 2.14.*,
                        ghci == 8.6.*
     else
